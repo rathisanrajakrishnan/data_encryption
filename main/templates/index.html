@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rathisan's Text Encryption & Decryption</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function copyToClipboard(elementId) {
+            var textarea = document.getElementById(elementId);
+            textarea.select();
+            document.execCommand("copy");
+            alert("Copied to clipboard!");
+            // Remove the decryption key from the page after copying
+            textarea.value = "";
+        }
+
+        function showDecryptionModal() {
+            var modal = document.getElementById("decryptionModal");
+            modal.style.display = "block";
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Rathisan's Text Encryption & Decryption</h1>
+        <div id="encryption">
+            <h2>Encryption</h2>
+            <form action="/" method="post">
+                <label for="cipher">Choose a cipher:</label>
+                <select id="cipher" name="cipher" required>
+                    <option value="Caesar">Caesar</option>
+                    <option value="ROT13">ROT13</option>
+                </select><br>
+                <label for="message">Enter the message you want to encrypt:</label><br>
+                <textarea id="message" name="message" rows="4" cols="50" required></textarea><br>
+                <label for="shift">Shift (for Caesar cipher only):</label><br>
+                <input type="number" id="shift" name="shift" min="1" max="25"><br>
+                <button type="submit">Encrypt</button>
+            </form>
+            {% if encrypted_text %}
+                <p>Encrypted Text: {{ encrypted_text }}</p>
+                <p>Decryption Key: <input type="text" id="decryptionKey" value="{{ decryption_key }}" readonly></p>
+                <button onclick="copyToClipboard('decryptionKey')">Copy Decryption Key</button>
+            {% endif %}
+        </div>
+
+        <div id="encryptions">
+            <h2>Encryptions Made</h2>
+            {% for message, data in encrypted_messages.items() %}
+                <p>The encrypted version of your message is "{{ data.encrypted_text }}"</p>
+            {% endfor %}
+        </div>
+
+        <!-- Decryption Modal -->
+        <div id="decryptionModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="document.getElementById('decryptionModal').style.display='none'"></span>
+                <h2>Decryption</h2>
+                <form action="/" method="post">
+                    <label for="decryptionKeyInput">Enter the decryption key:</label><br>
+                    <input type="text" id="decryptionKeyInput" name="decryption_key" required><br>
+                    <button type="submit">Decrypt</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Display decrypted message -->
+        {% if decrypted_message %}
+            <div id="decryptedMessage">
+                <h2>Decrypted Message</h2>
+                <p>{{ decrypted_message }}</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Website</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        <!-- Image positioned at the top left -->
+        <img class="top-left-image" src="{{ url_for('static', filename='images/clc.png') }}" alt="Top Left Image">
+    
+        <!-- Image positioned at the top right -->
+        <img class="top-right-image" src="{{ url_for('static', filename='images/clc.png') }}" alt="Top Right Image">
+    
+</body>
+</html>

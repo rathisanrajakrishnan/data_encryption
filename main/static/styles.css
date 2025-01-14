@@ -1,0 +1,97 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(
+    to bottom right,
+    red,
+    white
+  ); /* Red and white gradient background */
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center; /* Center align the titles */
+  font-size: 36px; /* Increase font size */
+  color: white; /* Text color */
+}
+
+h2 {
+  text-align: center; /* Center align the titles */
+  font-size: 24px; /* Increase font size */
+  color: white; /* Text color */
+}
+
+form {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); /* Semi-transparent white background for forms */
+  padding: 20px;
+  border-radius: 10px;
+}
+
+input[type="text"],
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: red;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.message {
+  text-align: center; /* Center align the message */
+  font-size: 18px; /* Increase font size */
+  color: white; /* Text color */
+}
+
+.result {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); /* Semi-transparent white background for result */
+  border-radius: 10px;
+}
+
+/* Position the image at the top left */
+.top-left-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: auto; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
+  z-index: 999; /* Ensure it's above other content */
+}
+
+/* Position the image at the top right */
+.top-right-image {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: auto; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
+  z-index: 999; /* Ensure it's above other content */
+}
